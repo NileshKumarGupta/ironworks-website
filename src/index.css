@@ -1,13 +1,123 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --grayishBlack: #2a2f35;
+  --darkBlue: #004896;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  background-color: rgb(237, 237, 237);
+}
+
+object {
+  pointer-events: none;
+}
+
+@keyframes slideTop {
+  0% {
+    transform: translateY(-8vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottomHeader {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottomSmall {
+  0% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slideUp {
+  animation-name: slideBottom;
+  animation-duration: 0.5s;
+}
+
+.slideUpHeader {
+  animation-name: slideBottomHeader;
+  animation-duration: 0.5s;
+}
+
+.slideUpSmall {
+  animation-name: slideBottomSmall;
+  animation-duration: 0.6s;
+}
+
+@media (max-width: 700px) and (min-width: 500px) {
+  body {
+    font-size: 10px;
+  }
+
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) and (min-width: 700px) {
+  body {
+    font-size: 10px;
+  }
+
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 900px) {
+  body {
+    font-size: 14px;
+  }
+
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 800px) {
+  body {
+    font-size: 12px;
+  }
+
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 12px;
+  }
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* 
+breakpoints 1100px
+900px
+800px
+700px
+*/

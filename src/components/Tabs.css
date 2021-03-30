@@ -1,0 +1,67 @@
+.tabHeaders {
+  width: 80%;
+  margin: 4em auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tabHead {
+  width: fit-content;
+  font-size: 1rem;
+  padding: 0.5em 2.5em;
+  border-radius: 1em;
+  cursor: pointer;
+  margin: auto;
+}
+
+.activeHead {
+  background-color: #2a2f35;
+  color: white;
+}
+
+.tabItem {
+  display: none;
+}
+
+.activeContent {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-row-gap: 3em;
+  justify-items: center;
+}
+
+.cardImage {
+  width: 375px;
+}
+
+@media (max-width: 600px) {
+  .activeContent {
+    grid-template-columns: 1fr;
+    grid-row-gap: 3em;
+  }
+  .tabHeaders {
+    display: flex;
+    justify-content: center;
+  }
+  .tabHead {
+    padding: 0.5em 1.5em;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 400px) {
+  .cardImage {
+    width: 250px;
+  }
+}
+
+@media (max-width: 400px) and (min-width: 300px) {
+  .cardImage {
+    width: 240px;
+  }
+}
+
+@media (max-width: 500px) and (min-width: 400px) {
+  .tabHead {
+    padding: 1em 1.5em;
+  }
+}
