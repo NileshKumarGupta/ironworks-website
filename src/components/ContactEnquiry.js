@@ -118,7 +118,7 @@ export default function ContactEnquiry() {
         >
           CONTACT
         </Typography>
-        <div className={`${classes.content} ${visible ? "slideUp" : ""}`}>
+        <div className={`${classes.content} ${visible ? "slideUpSmall" : ""}`}>
           <div className={classes.text}>
             <Typography variant="h4" style={{ marginBottom: "2em" }}>
               Connect With Us
@@ -142,17 +142,7 @@ export default function ContactEnquiry() {
               Send an Enquiry
             </Typography>
             <form style={{ width: "100%", margin: "auto" }}>
-              <div
-                // style={{
-                //   display: "flex",
-                //   width: "90%",
-                //   margin: "auto",
-                //   ["@media (max-width: 700px)"]: {
-                //     flexDirection: "column",
-                //   },
-                // }}
-                className={classes.nameForm}
-              >
+              <div className={classes.nameForm}>
                 <TextField
                   variant="outlined"
                   label="First Name"
