@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { makeStyles, TextField, Typography, Button } from "@material-ui/core";
 
+import { db } from "../firebase";
+
 const useStyles = makeStyles({
   hr: {
     borderColor: "#cfd6de",
@@ -35,7 +37,23 @@ const useStyles = makeStyles({
 
 export default function Subscribe() {
   const classes = useStyles();
+
   const [email, setEmail] = useState("");
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    db.collection("subscribe")
+      .add({
+        email,
+      })
+      .then(() => {
+        alert("Successfully Subscribed");
+        setEmail("");
+      })
+      .catch(() => alert("Some error occurd, Please try again"));
+  };
+
   return (
     <div style={{ paddingBottom: "8em" }}>
       <hr className={classes.hr} id="subscribe"></hr>
@@ -50,23 +68,19 @@ export default function Subscribe() {
         >
           SUBSCRIBE
         </Typography>
-        <div className={classes.iform}>
+        <form className={classes.iform} onSubmit={handleFormSubmit}>
           <TextField
             variant="outlined"
             label="Email"
             style={{ textAlign: "center", width: "100%" }}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            type="email"
           ></TextField>
-        </div>
-        <Button
-          onClick={() => {
-            console.log(email);
-          }}
-          className={classes.submitButton}
-        >
-          Subscribe
-        </Button>
+          <Button className={classes.submitButton} type="submit">
+            Subscribe
+          </Button>
+        </form>
       </div>
     </div>
   );

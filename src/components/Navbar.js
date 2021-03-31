@@ -40,6 +40,7 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     margin: "auto",
     padding: "0",
+    transform: "scaleX(0.9)",
   },
   linkBar: {
     padding: "5px",

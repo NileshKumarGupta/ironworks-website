@@ -1,23 +1,33 @@
-import { Typography } from "@material-ui/core";
+import { Link, Typography } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 
 import "./Tabs.css";
 
-import testImage from "../assets/testImage.jpg";
+import SatianuLogo from "../assets/saitanuLogo.png";
 
-const CompanyInfo = () => {
+const CompanyInfo = ({ image, name, url }) => {
   return (
     <div>
-      <img src={testImage} alt="" className="cardImage"></img>
+      <img src={image} alt="" className="cardImage"></img>
       <Typography variant="h6" style={{ color: "var(--darkBlue)" }}>
-        Company Name
+        <Link href={url} target="blank">
+          {name}
+        </Link>
       </Typography>
     </div>
   );
 };
 
+const ComingSoon = () => {
+  return (
+    <div style={{ margin: "4em auto 0 auto", color: "#818387" }}>
+      <Typography variant="h2">Coming Soon</Typography>
+    </div>
+  );
+};
+
 const Tabs = ({ visible }) => {
-  const [currTab, setCurrTab] = useState(0);
+  const [currTab, setCurrTab] = useState(2);
   const tabDiv = useRef();
 
   return (
@@ -48,30 +58,25 @@ const Tabs = ({ visible }) => {
             visible && currTab === 0 ? "activeContent slideUpSmall" : ""
           }`}
         >
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
+          <ComingSoon />
         </div>
         <div
           className={`tabItem ${
             visible && currTab === 1 ? "activeContent slideUpSmall" : ""
           }`}
         >
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
+          <ComingSoon />
         </div>
         <div
           className={`tabItem ${
             visible && currTab === 2 ? "activeContent slideUpSmall" : ""
           }`}
         >
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
-          <CompanyInfo />
+          <CompanyInfo
+            image={SatianuLogo}
+            name="Satianu"
+            url="https://www.satianu.com/"
+          />
         </div>
       </div>
     </div>

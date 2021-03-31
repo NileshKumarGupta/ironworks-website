@@ -18,6 +18,8 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    transform: "scaleX(0.9)",
+    zIndex: "0",
     //eslint-disable-next-line
     ["@media (max-width:950px)"]: {
       fontSize: "10px",

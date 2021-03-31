@@ -6,7 +6,9 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+
 import useVisibility from "../hooks/useVisibilty";
+import { db } from "../firebase";
 
 const useStyles = makeStyles({
   hr: {
@@ -102,18 +104,36 @@ export default function ContactEnquiry() {
   const [company, setcompany] = useState("");
   const [position, setposition] = useState("");
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    db.collection("enquiry")
+      .add({
+        firstName,
+        lastName,
+        phone,
+        email,
+        company,
+        position,
+      })
+      .then(() => {
+        alert("We will contact you soon!");
+        setfirstName("");
+        setlastname("");
+        setphone("");
+        setemail("");
+        setcompany("");
+        setposition("");
+      })
+      .catch(() => alert("Some error occured, please try again!"));
+  };
+
   return (
     <div id="contact" className={classes.contactDiv}>
       <div ref={contactDiv}>
         <hr className={classes.hr}></hr>
         <Typography
           variant="h4"
-          // style={{
-          //   margin: "4em 0 1em 0",
-          //   textAlign: "center",
-          //   color: "#818387",
-          //   ["@media (max-width:800px)"]: { marginBottom: "0em" },
-          // }}
           className={`${classes.contactText} ${visible ? "slideUpHeader" : ""}`}
         >
           CONTACT
@@ -141,7 +161,10 @@ export default function ContactEnquiry() {
             <Typography variant="h4" style={{ marginBottom: "1.5em" }}>
               Send an Enquiry
             </Typography>
-            <form style={{ width: "100%", margin: "auto" }}>
+            <form
+              style={{ width: "100%", margin: "auto" }}
+              onSubmit={handleFormSubmit}
+            >
               <div className={classes.nameForm}>
                 <TextField
                   variant="outlined"
@@ -188,20 +211,7 @@ export default function ContactEnquiry() {
                 value={position}
                 onChange={(event) => setposition(event.target.value)}
               ></TextField>
-              <Button
-                className={classes.submitButton}
-                onClick={(ev) => {
-                  console.log(
-                    firstName,
-                    lastName,
-                    email,
-                    phone,
-                    company,
-                    position
-                  );
-                }}
-                type="submit"
-              >
+              <Button className={classes.submitButton} type="submit">
                 Submit
               </Button>
             </form>

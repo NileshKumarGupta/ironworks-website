@@ -18,6 +18,9 @@ import "./App.css";
 const useStyles = makeStyles({
   container: {
     marginTop: "-10vh",
+    position: "relative",
+    zIndex: "1",
+    transform: "scaleX(0.9)",
   },
   hr: {
     borderColor: "var(--darkBlue)",
